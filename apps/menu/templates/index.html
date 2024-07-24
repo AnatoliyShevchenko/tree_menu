@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Site</title>
-</head>
-<body>
-    {% load menu_tags %}
-    {% draw_menu 'main_menu' %}
-    {% block content %}{% endblock %}
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+{% load menu_tags %}
+{% draw_menu %}
+{% endblock %}
