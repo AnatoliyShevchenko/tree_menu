@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Site</title>
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    </head>
+    <body>
+        <h1>Welcome to our restaurant</h1>
+        <h3>This is menu page.</h3>
+        {% block content %}
+        {% load menu_tags %}
+        {% draw_menu %}
+        <script src="{% static "js/index.js" %}"></script>
+        {% endblock %}
+</body>
+</html>

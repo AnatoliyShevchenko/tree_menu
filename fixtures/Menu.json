@@ -1,0 +1,1 @@
+[{"model": "menu.menu", "pk": 1, "fields": {"name": "Русская кухня"}}, {"model": "menu.menu", "pk": 2, "fields": {"name": "Японская кухня"}}]
