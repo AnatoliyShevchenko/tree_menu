@@ -1,38 +1,44 @@
 # Django
 from django.db import models
-from django.urls import reverse
 
 
 class Menu(models.Model):
     name = models.CharField(max_length=100)
-    url = models.CharField(max_length=200, blank=True, null=True)
-    named_url = models.CharField(max_length=100, blank=True, null=True)
 
-    def get_absolute_url(self):
-        if self.named_url:
-            return reverse(self.named_url)
-        return self.url
+    class Meta:
+        ordering = ("id",)
+        verbose_name = "меню"
+        verbose_name_plural = "меню"
 
     def __str__(self):
         return self.name
+    
+
+class Category(models.Model):
+    title = models.CharField(max_length=100)
+
+    class Meta:
+        ordering = ("id",)
+        verbose_name = "категория"
+        verbose_name_plural = "категории"
+
+    def __str__(self) -> str:
+        return self.title
 
 
 class MenuItem(models.Model):
     title = models.CharField(max_length=100)
-    url = models.CharField(max_length=200, blank=True, null=True)
-    named_url = models.CharField(max_length=100, blank=True, null=True)
     menu = models.ForeignKey(
         Menu, related_name='items', on_delete=models.CASCADE
     )
-    parent = models.ForeignKey(
-        'self', blank=True, null=True, 
-        related_name='children', on_delete=models.CASCADE
+    category = models.ForeignKey(
+        Category, related_name='categories', on_delete=models.CASCADE
     )
 
-    def get_absolute_url(self):
-        if self.named_url:
-            return reverse(self.named_url)
-        return self.url
+    class Meta:
+        ordering = ("id",)
+        verbose_name = "блюдо"
+        verbose_name_plural = "блюда"
 
     def __str__(self):
         return self.title

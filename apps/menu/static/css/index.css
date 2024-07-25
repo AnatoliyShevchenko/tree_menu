@@ -1,0 +1,35 @@
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+}
+
+li a {
+    font-size: 18px;
+}
+
+li.active > a {
+    font-weight: bold;
+    color: red; /* Выделение активного элемента */
+}
+
+li ul {
+    display: none;
+    padding-left: 20px; /* Отступ для вложенных списков */
+}
+
+li.active > ul {
+    display: block; /* Раскрытие вложенных списков */
+}
+
+.toggle-submenu {
+    display: inline;
+    margin: 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
